@@ -6,8 +6,12 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'pillloMart' });
 });
 
-router.get('/product', function (req, res) {
-  res.render('user/product/index');
-});
+// router.get('/login', function (req, res) {
+//   res.render('user/login');
+// });
+
+// router.get('/register', function (req, res) {
+//   res.render('user/register');
+// });
 
 module.exports = router;

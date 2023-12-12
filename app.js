@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var adminRouter = require('./routes/admin');
+var usersRouter = require('./routes/user/users');
+var adminRouter = require('./routes/admin/admin');
+var productRouter = require('./routes/user/product');
+var legoRouter = require('./routes/user/lego');
 
 //1. config router
 // var mobileRouter = require('./routes/mobile');
@@ -13,12 +15,13 @@ var adminRouter = require('./routes/admin');
 
 var app = express();
 //2. config 'mongoose' module
-// var mongoose = require('mongoose');
-// var uri = '';
-// mongoose
-//   .connect(uri)
-//   .then(() => console.log('ok'))
-//   .catch((err) => console.log('err'));
+var mongoose = require('mongoose');
+var uri =
+  'mongodb+srv://huyhvq2003:alobloclo1234@cloud.eorbsob.mongodb.net/pilloMart';
+mongoose
+  .connect(uri)
+  .then(() => console.log('ok'))
+  .catch((err) => console.log('err'));
 
 //3. config 'body-parser' module
 var bodyParser = require('body-parser');
@@ -34,9 +37,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', usersRouter);
 app.use('/admin', adminRouter);
-// app.use('/mobile', mobileRouter);
+app.use('/product', productRouter);
+app.use('/lego', legoRouter);
 // app.use('/brand', brandRouter);
 
 // catch 404 and forward to error handler
