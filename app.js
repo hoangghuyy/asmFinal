@@ -4,10 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var usersRouter = require('./routes/user/users');
-var adminRouter = require('./routes/admin/admin');
-var productRouter = require('./routes/user/product');
-var legoRouter = require('./routes/user/lego');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin');
+var categoryRouter = require('./routes/category');
+var productRouter = require('./routes/product');
 
 //1. config router
 // var mobileRouter = require('./routes/mobile');
@@ -27,6 +28,9 @@ mongoose
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+var hbs = require('hbs');
+hbs.registerHelper('equal', require('handlebars-helper-equal'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -37,11 +41,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', usersRouter);
+app.use('/', indexRouter);
+app.use('/user', usersRouter);
 app.use('/admin', adminRouter);
+app.use('/category', categoryRouter);
 app.use('/product', productRouter);
-app.use('/lego', legoRouter);
-// app.use('/brand', brandRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

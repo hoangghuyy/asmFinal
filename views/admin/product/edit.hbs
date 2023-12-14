@@ -1,0 +1,73 @@
+{{!-- <form action='/category/edit/{{category._id}}' method='post'>
+  Category name:
+  <input type='text' name='name' id='' value='{{category.name}}' required />
+  <br /><br />
+  <input type='submit' value='Edit' />
+</form> --}}
+<main class='app-content'>
+  <div class='app-title'>
+    <div>
+      <h1><i class='fa fa-th-list'></i> Data Table</h1>
+      <p>Table to display analytical data effectively</p>
+    </div>
+    <ul class='app-breadcrumb breadcrumb side'>
+      <li class='breadcrumb-item'><i class='fa fa-home fa-lg'></i></li>
+      <li class='breadcrumb-item'>Tables</li>
+      <li class='breadcrumb-item active'><a href='#'>Data Table</a></li>
+    </ul>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='tile'>
+        <div class='tile-body'>
+          <form action='/product/edit/{{products._id}}' method='post'>
+            <div class='form-group'>
+              <label for='exampleInputEmail1'>Product name</label>
+              <input
+                type='text'
+                name='name'
+                class='form-control'
+                id='exampleInputEmail1'
+                aria-describedby='emailHelp'
+                value='{{products.name}}'
+              />
+            </div>
+            <div class='form-group'>
+              <label for='exampleInputPassword1'>Price</label>
+              <input
+                type='text'
+                name='price'
+                class='form-control'
+                id='exampleInputPassword1'
+                value='{{products.price}}'
+              />
+            </div>
+            <div class='form-group'>
+              <label for='exampleInputPassword1'>Image</label>
+              <input
+                type='text'
+                name='image'
+                class='form-control'
+                id='exampleInputPassword1'
+                value='{{products.image}}'
+              />
+            </div>
+            <div>
+              <label for='exampleInputPassword1'>Category</label>
+              <select class='form-control' name='category' id=''>
+                {{#each categories}}
+                  {{#equal products.categories this._id}}
+                    <option value='{{this._id}}' selected>{{this.name}}</option>
+                  {{/equal}}
+                  <option value='{{this._id}}'>{{this.name}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <br /><br />
+            <button type='submit' class='btn btn-primary'>Edit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
