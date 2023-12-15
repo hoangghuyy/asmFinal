@@ -1,13 +1,13 @@
 <main class='app-content'>
   <div class='app-title'>
     <div>
-      <h1><i class='fa fa-th-list'></i> Data Table</h1>
-      <p>Table to display analytical data effectively</p>
+      <h1><i class='fa fa-th-list'></i> Data Category</h1>
+      <p>Category to display analytical data effectively</p>
     </div>
     <ul class='app-breadcrumb breadcrumb side'>
       <li class='breadcrumb-item'><i class='fa fa-home fa-lg'></i></li>
-      <li class='breadcrumb-item'>Tables</li>
-      <li class='breadcrumb-item active'><a href='#'>Data Table</a></li>
+      <li class='breadcrumb-item'>Categories</li>
+      <li class='breadcrumb-item active'><a href='#'>Data Category</a></li>
     </ul>
   </div>
   <div class='row'>
@@ -16,7 +16,19 @@
         <div class='tile-body'>
           <a href='/category/add' class='btn btn-success'>Add New Category</a>
           <a href='/category/deleteall' class='btn btn-danger'>Delete All</a>
+          <a href='/category/sort/asc' class='btn btn-warning'>Sort ASC</a>
+          <a href='/category/sort/desc' class='btn btn-secondary'>Sort DESC</a>
           <br /><br />
+          <form action='/category/search' method='post'>
+            <input
+              class='form-control'
+              type='search'
+              name='keyword'
+              id=''
+              placeholder='Type to search...'
+              required
+            />
+          </form>
           <table class='table table-hover table-bordered' id='sampleTable'>
             <thead>
               <tr>

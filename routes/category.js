@@ -58,4 +58,23 @@ router.get('/deleteall', async (req, res) => {
   res.redirect('/category');
 });
 
+router.post('/search', async (req, res) => {
+  var keyword = req.body.keyword;
+  var categories = await CategoryModel.find({
+    name: new RegExp(keyword, 'i'),
+  });
+  res.render('admin/category/index', { categories, layout: 'layout_admin' });
+});
+
+router.get('/sort/desc', async (req, res) => {
+  var categories = await CategoryModel.find().sort({ name: 1 });
+  res.render('admin/category/index', { categories, layout: 'layout_admin' });
+});
+
+router.get('/sort/asc', async (req, res) => {
+  //sql: SELECT*FROM mobiles ORDER By model
+  var categories = await CategoryModel.find().sort({ name: -1 });
+  res.render('admin/category/index', { categories, layout: 'layout_admin' });
+});
+
 module.exports = router;

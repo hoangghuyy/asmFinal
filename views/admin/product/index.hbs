@@ -1,13 +1,13 @@
 <main class='app-content'>
   <div class='app-title'>
     <div>
-      <h1><i class='fa fa-th-list'></i> Data Table</h1>
-      <p>Table to display analytical data effectively</p>
+      <h1><i class='fa fa-th-list'></i> Data Product</h1>
+      <p>Product to display analytical data effectively</p>
     </div>
     <ul class='app-breadcrumb breadcrumb side'>
       <li class='breadcrumb-item'><i class='fa fa-home fa-lg'></i></li>
-      <li class='breadcrumb-item'>Tables</li>
-      <li class='breadcrumb-item active'><a href='#'>Data Table</a></li>
+      <li class='breadcrumb-item'>Products</li>
+      <li class='breadcrumb-item active'><a href='#'>Data Product</a></li>
     </ul>
   </div>
   <div class='row'>
@@ -30,40 +30,42 @@
             />
           </form>
           <br />
-          <table class='table table-hover table-bordered' id='sampleTable'>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each products}}
+          <div class='scroll'>
+            <table class='table table-hover table-bordered'>
+              <thead>
                 <tr>
-                  <td>{{name}}</td>
-                  <td>
-                    <img src='{{image}}' alt='' width='100' height='100' />
-                  </td>
-                  <td>{{price}}</td>
-                  <td>{{category.name}}</td>
-                  <td>
-                    <a
-                      href='/product/edit/{{_id}}'
-                      class='btn btn-outline-success'
-                    >Edit</a>
-                    <a
-                      href='/product/delete/{{_id}}'
-                      class='btn btn-outline-success'
-                      onclick="return confirm('Are you sure to delete this product ?')"
-                    >Delete</a>
-                  </td>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Actions</th>
                 </tr>
-              {{/each}}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {{#each products}}
+                  <tr>
+                    <td>{{name}}</td>
+                    <td>
+                      <img src='{{image}}' alt='' width='100' height='100' />
+                    </td>
+                    <td>{{price}}</td>
+                    <td>{{category.name}}</td>
+                    <td>
+                      <a
+                        href='/product/edit/{{_id}}'
+                        class='btn btn-outline-success'
+                      >Edit</a>
+                      <a
+                        href='/product/delete/{{_id}}'
+                        class='btn btn-outline-success'
+                        onclick="return confirm('Are you sure to delete this product ?')"
+                      >Delete</a>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

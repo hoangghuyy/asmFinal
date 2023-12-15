@@ -1,6 +1,6 @@
 var express = require('express');
-const ProductModel = require('../models/ProductModel');
-const CategoryModel = require('../models/CategoryModel');
+var ProductModel = require('../models/ProductModel');
+var CategoryModel = require('../models/CategoryModel');
 var router = express.Router();
 
 /* GET home page. */
@@ -68,12 +68,22 @@ router.get('/deleteall', async (req, res) => {
 
 router.post('/search', async (req, res) => {
   var keyword = req.body.keyword;
-  var products = await ProductModel.find({ model: new RegExp(keyword, 'i') });
+  var products = await ProductModel.find({
+    name: new RegExp(keyword, 'i'),
+  }).populate('category');
   res.render('admin/product/index', { products, layout: 'layout_admin' });
 });
 
 router.get('/sort/desc', async (req, res) => {
-  var products = await ProductModel.find().sort({ model: -1 });
+  var products = await ProductModel.find()
+    .sort({ price: 1 })
+    .populate('category');
+  res.render('admin/product/index', { products, layout: 'layout_admin' });
+});
+
+router.get('/sort/asc', async (req, res) => {
+  //sql: SELECT*FROM mobiles ORDER By model
+  var products = await ProductModel.find().sort({ price: -1 });
   res.render('admin/product/index', { products, layout: 'layout_admin' });
 });
 
