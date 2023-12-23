@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
 var categoryRouter = require('./routes/category');
 var productRouter = require('./routes/product');
+var countryRouter = require('./routes/country');
 
 //1. config router
 // var mobileRouter = require('./routes/mobile');
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/category', categoryRouter);
 app.use('/product', productRouter);
+app.use('/country', countryRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

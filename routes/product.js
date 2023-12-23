@@ -1,17 +1,25 @@
 var express = require('express');
 var ProductModel = require('../models/ProductModel');
 var CategoryModel = require('../models/CategoryModel');
+const CountryModel = require('../models/CountryModel');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', async (req, res) => {
-  var products = await ProductModel.find({}).populate('category');
+  var products = await ProductModel.find({})
+    .populate('category')
+    .populate('country');
   res.render('admin/product/index', { products, layout: 'layout_admin' });
 });
 
 router.get('/add', async (req, res) => {
   var categories = await CategoryModel.find({});
-  res.render('admin/product/add', { categories, layout: 'layout_admin' });
+  var countries = await CountryModel.find({});
+  res.render('admin/product/add', {
+    categories,
+    countries,
+    layout: 'layout_admin',
+  });
 });
 
 router.post('/add', async (req, res) => {

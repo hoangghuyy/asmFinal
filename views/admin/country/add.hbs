@@ -1,0 +1,36 @@
+<main class='app-content'>
+  <div class='app-title'>
+    <div>
+      <h1><i class='fa fa-th-list'></i> Add country</h1>
+      <p>Add Category to display analytical data effectively</p>
+    </div>
+    <ul class='app-breadcrumb breadcrumb side'>
+      <li class='breadcrumb-item'><i class='fa fa-home fa-lg'></i></li>
+      <li class='breadcrumb-item'>Country</li>
+      <li class='breadcrumb-item active'><a href='#'>Add Country</a></li>
+    </ul>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='tile'>
+        <div class='tile-body'>
+          <form action='/country/add' method='post'>
+            <div class='form-group'>
+              <label for='exampleInputEmail1'>Country name</label>
+              <input
+                type='text'
+                name='name'
+                class='form-control'
+                id='exampleInputEmail1'
+                aria-describedby='emailHelp'
+                required
+              />
+            </div>
+            <br />
+            <button type='submit' class='btn btn-primary'>Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

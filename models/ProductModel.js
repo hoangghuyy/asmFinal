@@ -5,7 +5,11 @@ var ProductSchema = mongoose.Schema({
   price: String,
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'categories', //'brand': collection name
+    ref: 'categories',
+  },
+  country: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'countries',
   },
 });
 
